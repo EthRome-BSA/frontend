@@ -249,14 +249,14 @@
 }
 
 .modal-wrapper {
-  width: 500px;
-  height: 600px;
+  width: 300px;
+  height: 400px;
 }
 
 .modal {
   background: white;
-  height:100%;
-  width:100%;
+  height:50%;
+  width:50%;
   border-radius: 15px;
   padding: 15px;
 }
@@ -265,8 +265,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -282,3 +282,8 @@
   justify-content: flex-end;
   font-size: 25px;
 }
+
+.custom-modal-style {
+  width: 897px;
+  height: 802px;
+  }

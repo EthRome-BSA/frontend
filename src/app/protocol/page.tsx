@@ -11,18 +11,22 @@ export default function Page(){
   const searchParams = useSearchParams()
   const [showModal, setShowModal] = useState(false);
   const [showIPFSModal, setShowIPFSModal] = useState(false);
- 
+
+  const [reviewInput, setReviewInput] = useState("");
   const name = searchParams.get('name')
   let reviews = [{review: "Uniswap is gas Uniswap is gas Uniswap is gas Uniswap is gas Uniswap is gas Uniswap is gas  Uniswap is gas"},
                 {review: "Uniswap is aweful"},
                 { review: "Uniswap is a mediumly annoying protocol"}]
   let stars = 4.2;
+  let input_stars = 4.2;
    
 function switchModals(){
   setShowModal(false)
   setShowIPFSModal(true)
 }
-
+function funcEventInput(e){
+  setReviewInput(e.value)
+}
 
 
  
@@ -32,7 +36,7 @@ function switchModals(){
     <main className={styles.main}>
 
 
-      <div className={styles.center}>
+<div className={styles.center}>
         <div>
         <h1 className={styles.title}>
           {name}
@@ -62,7 +66,7 @@ function switchModals(){
           >
             <main className={styles.main}>
               <h2>First, please connect your wallet!</h2>
-              <button onClick={switchModals}>Connect</button>
+              <button className={styles.button} onClick={switchModals}>Connect</button>
               
                
    
@@ -71,18 +75,31 @@ function switchModals(){
             
           </Modal>
 
-
-
           <Modal
             isOpen={showIPFSModal}
             // onRequestClose={setShowModal}
-            // style={styles.card1}
+            style={styles.card1}
             contentLabel="Example Modal"
           >
-            <main className={styles.card1}>
+            <main className={styles.main}>
               <h2>Next, Send your Review to IPFS and Transact!</h2>
-              <input></input>
-              <button onClick={() => setShowIPFSModal(false)}>Upload</button>
+              <br></br>
+              
+              <input
+            name="isGoing"
+            type="text"
+            defaultValue=""
+            onChange={e => funcEventInput(e)} />
+         <br></br>
+              <ReactStars 
+        count={5} 
+        size={30} 
+        color2={'#ff0077'}
+        value={input_stars}
+        edit={true}
+         /> 
+         <br></br> 
+              <button  className={styles.button} onClick={() => setShowIPFSModal(false)}>Upload</button>
               
                
         
@@ -91,11 +108,13 @@ function switchModals(){
             
           </Modal>
 
+         
+
       <div className={styles.card1}>
-<div className={styles.center}>
-      <h2>
-          Read the reviews of the {name} protocol users:
-      </h2>
+      <div className={styles.center}>
+        <h2>
+            Read the reviews of the {name} protocol users:
+        </h2>
       </div>
 
         <div className={styles.grid}>
