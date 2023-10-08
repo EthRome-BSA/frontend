@@ -24,7 +24,7 @@ export default function Page() {
 
       <div className={styles.center}>
       <h3 className={styles.description}>
-          [insert small paragraph about what RatingFinance is]
+          [The Dapps Review Platform]
       </h3>
       </div>
 <div className={styles.card1}>
