@@ -2,6 +2,9 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import Link from 'next/link';
 
+
+
+
 export default function Page() {
   let protocols = [{name: "Uniswap", description:"Description"}, 
                   {name: "Aave", description:"Description"},
@@ -10,6 +13,8 @@ export default function Page() {
                   {name: "Protocol 5", description:"Description"}]
 
   return (
+    
+        
     <main className={styles.main}>
       <div className={styles.center}>
         <h1 className={styles.title}>
@@ -53,5 +58,6 @@ export default function Page() {
 
       
     </main>
+   
   )
 }

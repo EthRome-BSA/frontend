@@ -5,31 +5,30 @@ import ReactStars from 'react-stars'
 import {useState} from "react";
 import Modal from 'react-modal';
 
+
+
 export default function Page(){
   const searchParams = useSearchParams()
   const [showModal, setShowModal] = useState(false);
+  const [showIPFSModal, setShowIPFSModal] = useState(false);
  
   const name = searchParams.get('name')
   let reviews = [{review: "Uniswap is gas Uniswap is gas Uniswap is gas Uniswap is gas Uniswap is gas Uniswap is gas  Uniswap is gas"},
                 {review: "Uniswap is aweful"},
                 { review: "Uniswap is a mediumly annoying protocol"}]
   let stars = 4.2;
+   
+function switchModals(){
+  setShowModal(false)
+  setShowIPFSModal(true)
+}
 
 
-  
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
+ 
 
   return (
+    
     <main className={styles.main}>
 
 
@@ -58,20 +57,36 @@ export default function Page(){
           <Modal
             isOpen={showModal}
             // onRequestClose={setShowModal}
-            style={styles.main}
+            style={styles.card1}
             contentLabel="Example Modal"
           >
             <main className={styles.main}>
-              <h2>Hello</h2>
-              <button onClick={() => setShowModal(false)}>close</button>
-              <div>I am a modal</div>
-              <form>
-                <input />
-                <button>tab navigation</button>
-                <button>stays</button>
-                <button>inside</button>
-                <button>the modal</button>
-              </form>
+              <h2>First, please connect your wallet!</h2>
+              <button onClick={switchModals}>Connect</button>
+              
+               
+   
+             
+            </main>
+            
+          </Modal>
+
+
+
+          <Modal
+            isOpen={showIPFSModal}
+            // onRequestClose={setShowModal}
+            // style={styles.card1}
+            contentLabel="Example Modal"
+          >
+            <main className={styles.card1}>
+              <h2>Next, Send your Review to IPFS and Transact!</h2>
+              <input></input>
+              <button onClick={() => setShowIPFSModal(false)}>Upload</button>
+              
+               
+        
+             
             </main>
             
           </Modal>
@@ -105,7 +120,7 @@ export default function Page(){
 
 
 
-      
+
     </main>
   );
 };
